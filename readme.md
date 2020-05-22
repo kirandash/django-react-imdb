@@ -46,7 +46,7 @@
 5. For Linting and debugging: Add Python extension by Microsoft in VSCode
 6. Check path of installation: `which python` & `which python3`
 
-### 2.3 Python package manageer pip
+### 2.3 Python package manager pip
 1. In python to add any additional package we will use the package manager pip. It stands for pip installs package.
 2. pip comes by default with python.
 3. To install a package run: `pip install packagename`
@@ -56,6 +56,7 @@
     - And once our project is finished, if we want the same project to run on a different machine, we don't need to send entire virtual environment to the new machine. All we have to do is create one file called requirements.txt which will hold list of all the packages. And use that file to install all packages for another virtual environment on a new system.
 2. **Create venv** using: `python3 -m venv imdb_venv`: -m stands for make
 3. **activate**: `. imdb_venv/bin/activate` or `source imdb_venv/bin/activate`. Once activated: terminal prompt will start with (imdb_venv)
+4. **Deactivate**: `deactivate`
 
 ### 2.5 Install Django
 1. From venv: `pip install django` - installs django (latest: 3.0.6) and pytz library for timezone support
@@ -64,4 +65,10 @@
 1. from venv: `django-admin startproject imdb` or `django-admin startproject imdb .` if you want it to be created in current directory
 2. Rename main folder to `imddb_project` to avoid confusion with inside project folder with same name.
 3. manage.py: has all the code for running scripts
-4. Run server: `cd imdb_project` and `python3 manage.py runserver`
+4. Run server: `cd imdb_project` and `python manage.py runserver` no need to mention python3 again. Since venv was created with python3. we can directly use python.
+
+### 2.7 PyCharm
+1. Launch project with pycharm. Select folder that contains both venv and project. It automatically activates venv. unlike vscode where we have to manually activate.
+2. Launch terminal and run `python manage.py runserver`
+3. Instead of doing that again and again, we can configure PyCharm to do that for us.
+    - Add Configuration ---> Add script path, working directory path and parameters: runserver.
