@@ -60,7 +60,8 @@
 
 ### 2.5 Install Django and djangorestframework
 1. From venv: `pip install django` - installs django (latest: 3.0.6) and pytz library for timezone support
-2. `pip install djangorestframework`. Also upgrade pip `pip install --upgrade pip`
+2. `pip install djangorestframework`. and add `rest_framework` to settings.py file.
+3. Optional: If getting any warning, also upgrade pip `pip install --upgrade pip`.
 
 ### 2.6 Create Project
 1. from venv: `django-admin startproject imdb` or `django-admin startproject imdb .` if you want it to be created in current directory
@@ -81,3 +82,7 @@
 4. create migrations: `python manage.py makemigrations`
 5. Apply migrations: `python manage.py migrate`
 6. check migration: `python manage.py showmigrations`
+
+### 2.9 URLs, create superuser
+1. Create api/urls.py file. Include it in main project urls file: imdb/urls.py
+2. `python manage.py createsuperuser`
