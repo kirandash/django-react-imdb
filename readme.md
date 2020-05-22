@@ -94,3 +94,12 @@
 3. `python manage.py makemigrations` and `python manage.py migrate`
 4. Run or `python manage.py runserver`
 5. Check at http://127.0.0.1:8000/admin/
+
+### 2.11 Serializers using rest_framework
+1. Create api/serializers.py file
+    - Create MovieSerializer and RatingSerializer to convert Movie, Rating models into JSON. (using sesrializers.ModelSerializer from rest_framework)
+2. api/views.py file: Create MovieViewSet, RatingViewSet using viewsets from rest_framework. To serve serialized data to endpoint
+3. Add routes on api/urls.py file where our views will be available for access.
+    - register viewsets on rest_framework routers
+4. Test http://127.0.0.1:8000/api/movies/ in postman or browser for GET, POST, PUT & DELETE
+5. Test http://127.0.0.1:8000/api/ratings/
