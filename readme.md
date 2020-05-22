@@ -111,3 +111,9 @@
     - POST: enter key value pair. user and movie ids can be checked in admin. Try posting twice: it will throw the unique movie, user error.
     - PUT is also not allowed because of unique_together
     - Test POST with rating > 5 ex 10. will throw max value validation
+    
+### 2.12 Custom Method in MovieViewSet for rating movie
+1. We will see how to customize ModelViewSets from rest_framework by overwriting with our own code
+2. api/views.py - customize MovieViewSet to create a new end point to rate movie
+    - create a new custom fn and decorate it as POST
+    - Test in postman by hitting a POST call to http://127.0.0.1:8000/api/movies/3/rate_movie/ should return the response we added in views.py file.
