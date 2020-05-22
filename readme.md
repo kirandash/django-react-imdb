@@ -58,8 +58,9 @@
 3. **activate**: `. imdb_venv/bin/activate` or `source imdb_venv/bin/activate`. Once activated: terminal prompt will start with (imdb_venv)
 4. **Deactivate**: `deactivate`
 
-### 2.5 Install Django
+### 2.5 Install Django and djangorestframework
 1. From venv: `pip install django` - installs django (latest: 3.0.6) and pytz library for timezone support
+2. `pip install djangorestframework`. Also upgrade pip `pip install --upgrade pip`
 
 ### 2.6 Create Project
 1. from venv: `django-admin startproject imdb` or `django-admin startproject imdb .` if you want it to be created in current directory
@@ -72,3 +73,11 @@
 2. Launch terminal and run `python manage.py runserver`
 3. Instead of doing that again and again, we can configure PyCharm to do that for us.
     - Add Configuration ---> Add script path, working directory path and parameters: runserver.
+    
+### 2.8 Create new App, run migrations
+1. The project folder imdb is basically a container for all the apps that we can have on our website. Each module can be specified as an app which will perform a specific task.
+2. Create app: `python manage.py startapp api` or `django-admin startapp api`
+3. Add api to list of INSTALLED_APPS
+4. create migrations: `python manage.py makemigrations`
+5. Apply migrations: `python manage.py migrate`
+6. check migration: `python manage.py showmigrations`
