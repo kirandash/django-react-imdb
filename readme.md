@@ -101,5 +101,13 @@
 2. api/views.py file: Create MovieViewSet, RatingViewSet using viewsets from rest_framework. To serve serialized data to endpoint
 3. Add routes on api/urls.py file where our views will be available for access.
     - register viewsets on rest_framework routers
-4. Test http://127.0.0.1:8000/api/movies/ in postman or browser for GET, POST, PUT & DELETE
-5. Test http://127.0.0.1:8000/api/ratings/
+4. Test http://127.0.0.1:8000/api/movies/ in postman or browser for GET, POST, PUT & DELETE. Better to use postman since that will mimic an actual external source.
+    - Note: while testing make sure to always add / at the end.
+    - postman, for POST: enter url ---> select body ---> select form-data ---> enter title and description for key, value and submit. If one of them is not entered: it will throw an error: required field.
+    - post couple of movies. Test. Test GET call. - post call will return data we posted
+    - Test PUT at: http://127.0.0.1:8000/api/movies/2/ and enter key value pairs. check GET - response body will return updated data
+    - Test DELETE. http://127.0.0.1:8000/api/movies/1/. Note: Delete does not have any response body.
+5. Test http://127.0.0.1:8000/api/ratings/ - GET call
+    - POST: enter key value pair. user and movie ids can be checked in admin. Try posting twice: it will throw the unique movie, user error.
+    - PUT is also not allowed because of unique_together
+    - Test POST with rating > 5 ex 10. will throw max value validation
