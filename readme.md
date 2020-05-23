@@ -117,3 +117,8 @@
 2. api/views.py - customize MovieViewSet to create a new end point to rate movie
     - create a new custom fn and decorate it as POST
     - Test in postman by hitting a POST call to http://127.0.0.1:8000/api/movies/3/rate_movie/ should return the response we added in views.py file.
+    
+### 2.13 Request Data for custom method rating movie
+1. Check if stars is provided in request or not and accordingly modify response.
+    - Test at : http://127.0.0.1:8000/api/movies/3/rate_movie/ by providing/not stars
+2. Get access to movie using pk
