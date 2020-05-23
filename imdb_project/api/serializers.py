@@ -9,6 +9,13 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'password')
+        extra_kwargs = {'password': {'write_only': True, 'required': True}}
+
+    # overwriting the create method to create user with validated data instead of plain data - so pwd is hashed
+    def create(self, validated_data):
+        # using built in create_user method for User object to create user with validated data
+        user = User.objects.create_user(**validated_data)
+        return user
 
 
 class MovieSerializer(serializers.ModelSerializer):

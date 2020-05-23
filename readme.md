@@ -163,3 +163,14 @@
  2. Create UserSerializer in api/serializers.py file
  3. Link UserViewSet to a url in api/urls.py file using which users can register. `router.register('users','UserViewSet')`
  4. Test - by calling http://127.0.0.1:8000/api/users/ with GET method. no need to pass any headers for this. Response should return username and hashed password.
+ 
+ ### 2.18 Register user - hide pwd in GET call and hash it for POST
+ 1. Now with GET call any one can see the pwd. To avoid this: Add extra kwargs to UserSerializer for making pwd write only and mandatory.
+    - Test http://127.0.0.1:8000/api/users/. Now pwd will not be returned.
+ 6. Test registration - http://127.0.0.1:8000/api/users/ with POST call.
+    - If only username is sent, it wl throw pwd reqd error.
+    - Provide both fields and on POST, it will be successful and return just id, username.
+ 7. But right now we are sending the password as a string. Thus, in admin if we check kiran2, password will show invalid formatting.
+    - We must hash the password before sending it to POST call
+    - To handle this overwrite the create method and pass validatedData while creating user. Thus password will be automatically validated and hashed.
+    - Test by posting another user and then in admin http://127.0.0.1:8000/admin/auth/user/ for this user, password will show as hashed.
