@@ -208,3 +208,7 @@
 ### 3.1 Project setup
 1. `npx create-react-app imdb_ui`
 2. `cd imdb_ui` and `npm start`
+
+### 3.2 Cleanup
+1. src/ folder - Delete logo, App.test.js
+2. Modify title in index.html, content in App.js & App.css
