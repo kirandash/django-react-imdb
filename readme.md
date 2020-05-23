@@ -212,3 +212,7 @@
 ### 3.2 Cleanup
 1. src/ folder - Delete logo, App.test.js
 2. Modify title in index.html, content in App.js & App.css
+
+### 3.3 Create List component
+1. Create components/MovieList.js
+2. Pass movie data from App.js
