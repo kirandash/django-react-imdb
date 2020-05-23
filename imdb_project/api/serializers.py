@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Movie, Rating
 from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
 
 
 # serializer for converting movie model data into JSON
@@ -15,6 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # using built in create_user method for User object to create user with validated data
         user = User.objects.create_user(**validated_data)
+        Token.objects.create(user=user)
         return user
 
 

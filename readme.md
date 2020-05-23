@@ -158,7 +158,7 @@
     - remove hardcoded user data
     - Test http://127.0.0.1:8000/api/movies/5/rate_movie/ by padding `Authorization: Token tokendata` with POST call.
     
- ### 2.17 Register user
+ ### 2.17 Create users API endpoints for GET, POST, DELETE methods
  1. Create UserViewSet in api/views.py file
  2. Create UserSerializer in api/serializers.py file
  3. Link UserViewSet to a url in api/urls.py file using which users can register. `router.register('users','UserViewSet')`
@@ -167,10 +167,21 @@
  ### 2.18 Register user - hide pwd in GET call and hash it for POST
  1. Now with GET call any one can see the pwd. To avoid this: Add extra kwargs to UserSerializer for making pwd write only and mandatory.
     - Test http://127.0.0.1:8000/api/users/. Now pwd will not be returned.
- 6. Test registration - http://127.0.0.1:8000/api/users/ with POST call.
+ 2. Test registration - http://127.0.0.1:8000/api/users/ with POST call.
     - If only username is sent, it wl throw pwd reqd error.
     - Provide both fields and on POST, it will be successful and return just id, username.
- 7. But right now we are sending the password as a string. Thus, in admin if we check kiran2, password will show invalid formatting.
+ 3. But right now we are sending the password as a string. Thus, in admin if we check kiran2, password will show invalid formatting.
     - We must hash the password before sending it to POST call
     - To handle this overwrite the create method and pass validatedData while creating user. Thus password will be automatically validated and hashed.
     - Test by posting another user and then in admin http://127.0.0.1:8000/admin/auth/user/ for this user, password will show as hashed.
+ 4. Delete kiran2, since it has improper pwd hashing
+    - http://127.0.0.1:8000/api/users/2/ DELETE method
+    
+ ### 2.19 Creating Token for User
+ 1. **Token Issue Fix:** 
+    - If we check at http://127.0.0.1:8000/admin/authtoken/token/, we will see only one token that we manually created. Thus, Django is not creating token automatically when a new user is registered.
+    - in api/serializers.py file for UserSerializer, modify create method to create token as well along with user.
+    - Test by creating a new user kiran4 with POST: http://127.0.0.1:8000/api/users/
+    - Check if token is created for kiran4 in admin/tokens section.
+    - kiran3 does not have any token. Can create one manually.
+ 2. Check login at http://127.0.0.1:8000/auth/ by entering new user details and it should return the token.
