@@ -186,8 +186,20 @@
     - kiran3 does not have any token. Can create one manually.
  2. Check login at http://127.0.0.1:8000/auth/ by entering new user details and it should return the token.
  
- ### 2.20 Restricting MovieViewSet
- 1. Add REST_FRAMEWORK settings in settings.py file.
- 2. Add permission_classes IsAuthenticated to MovieViewSet in views.py file.
- 3. Now on calling GET on http://127.0.0.1:8000/api/movies/ will return authentication not provided.
- 4. Test again by sending `Authorization: Token tokendataforkiran4` with GET call
+### 2.20 Restricting MovieViewSet
+1. Add REST_FRAMEWORK settings in settings.py file.
+2. Add permission_classes IsAuthenticated to MovieViewSet in views.py file.
+3. Now on calling GET on http://127.0.0.1:8000/api/movies/ will return authentication not provided.
+4. Test again by sending `Authorization: Token tokendataforkiran4` with GET call
+ 
+### 2.21 AllowAny, Restricting update and create for Ratings API
+1. Add AllowAny for MovieViewSet and IsAuthenticated for RatingViewSet. This will make movies/ endpoint public while rating will stay private.
+2. Test 
+    - http://127.0.0.1:8000/api/movies/ will be available publicly
+    - But with ratings: http://127.0.0.1:8000/api/ratings/ we must pass token `Authorization: Token tokendataforkiran4`
+3. We already have rate_movie endpoint in MovieViewSet which handles POST and PUT for us. So we can disable the default create and update methods from RatingViewSet
+    - Overwrite the update() and create() methods in RatingViewSet
+    - Test PUT: http://127.0.0.1:8000/api/ratings/6/ - must return the error message 'You cant update rating like that'
+    - Test POST: http://127.0.0.1:8000/api/ratings/
+    - Test authentication as well by removing token from header
+4. Add IsAuthenticated back for MovieViewSet because we need only authenticated users to leave rating at rate_movie/ 

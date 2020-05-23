@@ -3,7 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.contrib.auth.models import User
 from .models import Movie, Rating
 from .serializers import MovieSerializer, RatingSerializer, UserSerializer
@@ -20,6 +20,7 @@ class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     authentication_classes = (TokenAuthentication,)
+    # permission_classes = (AllowAny,)
     permission_classes = (IsAuthenticated,)
 
     # custom method rate_movie to be available at
@@ -77,4 +78,16 @@ class RatingViewSet(viewsets.ModelViewSet):
     serializer_class = RatingSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
+
+    # overwriting update method to restrict update for rating - ModelViewSet ---> UpdateModelMixin ---> update method
+    def update(self, request, *args, **kwargs):
+        # response JSON message
+        response = {'message': 'You cant update rating like that'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+    # overwriting update method to restrict create for rating - ModelViewSet ---> CreateModelMixin ---> create method
+    def create(self, request, *args, **kwargs):
+        # response JSON message
+        response = {'message': 'You cant create rating like that'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
