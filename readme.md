@@ -129,3 +129,13 @@
     - Get user from `request.user`
 2. Create / update rating for a movie.
 3. Send rating data along with message in response.
+
+### 2.15 Add ratings info to movies API endpoint
+1. Create a custom fn to include ratings info to movies API. Fn can created in view/serializer/model.
+2. Create fn in Movie model in models.py
+3. Add that fn to serializer
+4. Test if new field `no_of_ratings` is added to the response body at: http://127.0.0.1:8000/api/movies/
+    - Test by deleting ratings
+5. Create another custom fn `avg_rating` in Movie model for avg rating.
+6. Add fn to MovieSerializer
+7. Test if new field `avg_rating` is added to the response body at: http://127.0.0.1:8000/api/movies/

@@ -8,6 +8,22 @@ class Movie(models.Model):
     title = models.CharField(max_length=32)
     description = models.TextField(max_length=360)
 
+    # custom fn to return total no of ratings for this movie
+    def no_of_ratings(self):
+        # select all ratings for this movie
+        ratings = Rating.objects.filter(movie=self)
+        return len(ratings)
+
+    def avg_rating(self):
+        total = 0
+        ratings = Rating.objects.filter(movie=self)
+        for rating in ratings:
+            total += rating.stars
+        if len(ratings) > 0:
+            return total/len(ratings)
+        else:
+            return 0
+
 
 class Rating(models.Model):
     # fields with references to other models
