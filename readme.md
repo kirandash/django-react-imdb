@@ -139,3 +139,21 @@
 5. Create another custom fn `avg_rating` in Movie model for avg rating.
 6. Add fn to MovieSerializer
 7. Test if new field `avg_rating` is added to the response body at: http://127.0.0.1:8000/api/movies/
+8. Note: Ratings info could also have been fetched separately from ratings API but then we will have to do 2 API calls. So, we handled it in an optimized way to return both movie and ratings data with movies API.
+
+### 2.16 Implement auth using Token Auth
+1. Enable token auth using rest_framework.authtoken
+    - Add it to INSTALLED_APPS in settings.py file
+2. run migration with `python manage.py migrate`
+    - It will apply authtoken migrations to our DB
+3. Generate token for current user in admin.
+    - http://127.0.0.1:8000/admin/authtoken/token/
+4. Create a login api endpoint at project level: imdb/urls.py file
+5. Test in postman
+    - POST call for http://127.0.0.1:8000/auth/
+    - on providing username and pwd, it wl return a token
+    - later we can restrict our other APIs to work only if this token is passed in Headers
+6. Add TokenAuthentication class in api/views.py for both movie and rating view set to handle/translate token received.
+    - Now user will not be anonymouse but kiran
+    - remove hardcoded user data
+    - Test http://127.0.0.1:8000/api/movies/5/rate_movie/ by padding `Authorization: Token tokendata` with POST call.
