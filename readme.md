@@ -203,3 +203,8 @@
     - Test POST: http://127.0.0.1:8000/api/ratings/
     - Test authentication as well by removing token from header
 4. Add IsAuthenticated back for MovieViewSet because we need only authenticated users to leave rating at rate_movie/ 
+
+## 3. React
+### 3.1 Project setup
+1. `npx create-react-app imdb_ui`
+2. `cd imdb_ui` and `npm start`
