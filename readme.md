@@ -154,9 +154,9 @@
     - on providing username and pwd, it wl return a token
     - later we can restrict our other APIs to work only if this token is passed in Headers
 6. Add TokenAuthentication class in api/views.py for both movie and rating view set to handle/translate token received.
-    - Now user will not be anonymouse but kiran
+    - Now user will not be anonymous but kiran
     - remove hardcoded user data
-    - Test http://127.0.0.1:8000/api/movies/5/rate_movie/ by padding `Authorization: Token tokendata` with POST call.
+    - Test http://127.0.0.1:8000/api/movies/5/rate_movie/ by sending `Authorization: Token tokendata` with POST call.
     
  ### 2.17 Create users API endpoints for GET, POST, DELETE methods
  1. Create UserViewSet in api/views.py file
@@ -185,3 +185,9 @@
     - Check if token is created for kiran4 in admin/tokens section.
     - kiran3 does not have any token. Can create one manually.
  2. Check login at http://127.0.0.1:8000/auth/ by entering new user details and it should return the token.
+ 
+ ### 2.20 Restricting MovieViewSet
+ 1. Add REST_FRAMEWORK settings in settings.py file.
+ 2. Add permission_classes IsAuthenticated to MovieViewSet in views.py file.
+ 3. Now on calling GET on http://127.0.0.1:8000/api/movies/ will return authentication not provided.
+ 4. Test again by sending `Authorization: Token tokendataforkiran4` with GET call
