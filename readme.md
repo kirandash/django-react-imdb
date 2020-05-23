@@ -121,4 +121,11 @@
 ### 2.13 Request Data for custom method rating movie
 1. Check if stars is provided in request or not and accordingly modify response.
     - Test at : http://127.0.0.1:8000/api/movies/3/rate_movie/ by providing/not stars
-2. Get access to movie using pk
+2. For rating a movie - rating model needs 3 things: movie, user and stars. Get access to movie using pk.
+
+### 2.14 Update and Create for custom method rating movie
+1. For rating a movie - rating model needs 3 things: movie, user and stars. We have already added movie to custom method. Let's add user and stars as well.
+    - Get stars from `request.data`
+    - Get user from `request.user`
+2. Create / update rating for a movie.
+3. Send rating data along with message in response.

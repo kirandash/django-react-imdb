@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from django.contrib.auth.models import User
 from .models import Movie, Rating
 from .serializers import MovieSerializer, RatingSerializer
 
@@ -29,9 +30,32 @@ class MovieViewSet(viewsets.ModelViewSet):
             # get specific movie object from Movie model using movie id
             movie = Movie.objects.get(id=pk)
             print('movie title', movie.title)
+            stars = request.data['stars']
+            # user = request.user # currently we have not implemented auth. So it will return anonymous
+            # temporary hard coded user
+            user = User.objects.get(id=1)
+            print('user', user.username)
+
+            try:
+                # if rating objects have same user and movie, update rating
+                rating = Rating.objects.get(user=user.id, movie=movie.id)
+                rating.stars = stars
+                rating.save()
+                # serialize rating object
+                serializer = RatingSerializer(rating, many=False)
+                response = {'message': 'Rating updated', 'result': serializer.data}
+                return Response(response, status=status.HTTP_200_OK)
+            except:
+                # otherwise, create a new rating
+                rating = Rating.objects.create(user=user, movie=movie, stars=stars)
+                # serialize rating object
+                serializer = RatingSerializer(rating, many=False)
+                response = {'message': 'Rating created', 'result': serializer.data}
+                return Response(response, status=status.HTTP_200_OK)
+
             # response JSON message
-            response = {'message': 'its working'}
-            return Response(response, status=status.HTTP_200_OK)
+            # response = {'message': 'its working'}
+            # return Response(response, status=status.HTTP_200_OK)
         # if not stars provided in request
         else:
             # response JSON message
