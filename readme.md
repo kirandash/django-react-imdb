@@ -157,3 +157,9 @@
     - Now user will not be anonymouse but kiran
     - remove hardcoded user data
     - Test http://127.0.0.1:8000/api/movies/5/rate_movie/ by padding `Authorization: Token tokendata` with POST call.
+    
+ ### 2.17 Register user
+ 1. Create UserViewSet in api/views.py file
+ 2. Create UserSerializer in api/serializers.py file
+ 3. Link UserViewSet to a url in api/urls.py file using which users can register. `router.register('users','UserViewSet')`
+ 4. Test - by calling http://127.0.0.1:8000/api/users/ with GET method. no need to pass any headers for this. Response should return username and hashed password.
