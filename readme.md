@@ -216,3 +216,11 @@
 ### 3.3 Create List component
 1. Create components/MovieList.js
 2. Pass movie data from App.js
+
+### 3.4 Fetch Data
+1. Fetch can be done in 2 ways:
+    - Axios: popular library for React
+    - use built in JS fetch method
+2. Add fetch GET call for movies api in App.js
+3. **CORS issue**:
+    - Now GET API call will fail. We must tell Django which servers to trust for API calls.
