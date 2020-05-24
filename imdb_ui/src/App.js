@@ -16,7 +16,7 @@ class App extends React.Component {
   componentDidMount(){
     // Fetch Data from API - url, options
     // GET Movies
-    fetch('http://127.0.0.1:8000/api/movies/', {
+    fetch(`${process.env.REACT_APP_API_URL}/api/movies/`, {
       method: 'GET',
       headers: {
         'Authorization': 'Token 9de5ae4e0f924d43aef5eaad22403d3657009fe6' // later we will get token dynamically

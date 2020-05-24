@@ -19,7 +19,7 @@ export class MovieDetails extends Component {
     rateClicked = stars => evt => {
         // Fetch Data from API - url, options
         // rate_movie
-        fetch(`http://127.0.0.1:8000/api/movies/${this.props.movie.id}/rate_movie/`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/movies/${this.props.movie.id}/rate_movie/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export class MovieDetails extends Component {
     }
 
     getDetails = () => {
-        fetch(`http://127.0.0.1:8000/api/movies/${this.props.movie.id}/`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/movies/${this.props.movie.id}/`, {
             method: 'GET',
             headers: {
                 'Authorization': 'Token 9de5ae4e0f924d43aef5eaad22403d3657009fe6' // later we will get token dynamically
