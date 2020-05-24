@@ -2,7 +2,7 @@
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
-  font-size: calc(10px + 2vmin);
+  font-size: 18px;
   color: white;
   margin: 0;
   padding: 50px;
@@ -16,4 +16,18 @@
 
 .orange {
   color: orange;
+}
+
+.purple {
+  color: purple;
+}
+
+.rate-container {
+  border-top: 3px solid purple;
+  max-width: 300px;
+}
+
+.rate-container .fa-star {
+  font-size: 30px;
+  cursor: pointer;
 }

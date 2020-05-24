@@ -260,3 +260,9 @@
     - or single line instead of above 3: `npm i --save @fortawesome/fontawesome-svg-core  @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome`
     - Add start font awesome icon to MovieDetails.js file. And change color of star based on avg rating
 2. Add no. of votes info to MovieDetails.js file.
+
+### 3.10 POST method for rating movie - API: movies/id/rate_movie/
+1. Add code in MovieDetails.js to POST rating for movie
+2. Add CSS for new stars
+3. Check if POST call is successful.
+4. Right now: after rating, star count is not being reflected on FE until refresh. We will fix that later.
