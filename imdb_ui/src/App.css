@@ -8,6 +8,12 @@
   padding: 50px;
 }
 
+h1 {
+  color: orange;
+  font-size: 50px;
+  margin-bottom: 40px;
+}
+
 .grid-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -37,6 +43,10 @@
   cursor: pointer;
 }
 
+.movie-list-item .fa-trash {
+  color: crimson;
+}
+
 button {
   background: green;
   border: none;
@@ -50,10 +60,14 @@ button {
 
 button:disabled {
   background: grey;
+  cursor: not-allowed;
 }
 
 input, textarea {
   font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 15px;
 }
 
 .movie-list button {

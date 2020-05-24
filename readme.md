@@ -296,3 +296,12 @@
 ### 3.16 Form update and Save
 1. Call POST and PUT APIs for movie in MovieForm.js
 2. Update state in parent App.js
+
+### 3.17 Routing
+1. Create Login.js component.
+2. Install **react-router-dom**: `npm i react-router-dom`
+3. Install **react-cookie**: `npm i react-cookie`: will use later
+4. Add **Route** and **BrowserRouter** to index.js
+    - Route is a component from react-router-dom that maps browser urls to components
+    - BrowserRouter is a component from react-router-dom that wraps all Route components and then can be used in React JSX.
+5. Test http://localhost:3000/ : login component and http://localhost:3000/movies/ : App component
