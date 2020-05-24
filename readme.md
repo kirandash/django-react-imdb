@@ -286,3 +286,9 @@
 2. Dispatch edit and New movie clicks from MovieList.js
 3. Listen to dispatch event and show the MovieForm component in edit/new movie mode.
 4. Add some styles
+
+### 3.15 Add fields to Form
+1. Add fields to edit title and description in form at MovieForm.js
+2. Link the fields to cancel, save, on change method.
+3. Dispatch cancel event to App.js
+4. Listen to cancel event on App.js and make editedMovie null

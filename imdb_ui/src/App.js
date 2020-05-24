@@ -51,13 +51,17 @@ class App extends React.Component {
 
   onNewMovie = () => {
       this.setState({
-        editedMovie: {title: '', description: ''}
+        editedMovie: {title: '', description: ''} // setting edited movie to blank values so new form data can be inserted
       });
   }
 
   onMovieDeleted = selMovie => {
     const movies = this.state.movies.filter(movie => movie.id !== selMovie.id);
     this.setState({ movies: movies, selectedMovie: null });
+  }
+
+  onCancelForm = () => {
+    this.setState({ editedMovie: null }) // Resetting editedMovie and hiding form
   }
 
   render() {
@@ -75,7 +79,7 @@ class App extends React.Component {
             {!this.state.editedMovie ? 
               <MovieDetails movie={this.state.selectedMovie} dispatchUpdateMovie={this.onMovieClick} />
               :
-              <MovieForm movie={this.state.editedMovie} />
+              <MovieForm movie={this.state.editedMovie} dispatchCancelClicked={this.onCancelForm} />
             }
           </div>
         </div>
