@@ -31,3 +31,8 @@
   font-size: 30px;
   cursor: pointer;
 }
+
+.movie-list-item .fa-edit, .movie-list-item .fa-trash {
+  margin-right: 15px;
+  cursor: pointer;
+}

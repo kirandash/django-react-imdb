@@ -276,3 +276,7 @@
 1. Right now we are repeating the API url host 'http://127.0.0.1:8000' in our code. We can optimize this by adding the environment details in a separate .env file.
 2. Replace host url with `${process.env.REACT_APP_API_URL}` in App.js and MovieDetails.js
 3. Restart FE server and test if APIs are still working.
+
+### 3.13 DELETE method
+1. Call Delete API in MovieList.js
+2. Update state in parent ie App.js to reflect the new data.

@@ -39,12 +39,17 @@ class App extends React.Component {
     })
   }
 
+  onMovieDeleted = selMovie => {
+    const movies = this.state.movies.filter(movie => movie.id !== selMovie.id);
+    this.setState({ movies: movies, selectedMovie: null });
+  }
+
   render() {
     return (
       <div className="App">
         <h1>IMDB</h1>
         <div className="grid-layout">
-          <MovieList movies={this.state.movies} dispatchMovieClick={this.onMovieClick} />
+          <MovieList movies={this.state.movies} dispatchMovieClick={this.onMovieClick} movieDeleted={this.onMovieDeleted} />
           <MovieDetails movie={this.state.selectedMovie} dispatchUpdateMovie={this.onMovieClick} />
         </div>
       </div>
