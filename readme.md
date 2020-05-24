@@ -292,3 +292,7 @@
 2. Link the fields to cancel, save, on change method.
 3. Dispatch cancel event to App.js
 4. Listen to cancel event on App.js and make editedMovie null
+
+### 3.16 Form update and Save
+1. Call POST and PUT APIs for movie in MovieForm.js
+2. Update state in parent App.js

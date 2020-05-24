@@ -45,6 +45,11 @@ button {
   color: white;
   border-radius: 4px;
   margin-right: 15px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: grey;
 }
 
 input, textarea {

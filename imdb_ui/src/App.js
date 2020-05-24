@@ -64,6 +64,15 @@ class App extends React.Component {
     this.setState({ editedMovie: null }) // Resetting editedMovie and hiding form
   }
 
+  onCreateMovie = movie => {
+    this.setState({ 
+      movies: [
+        ...this.state.movies, 
+        movie
+      ]
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -79,7 +88,11 @@ class App extends React.Component {
             {!this.state.editedMovie ? 
               <MovieDetails movie={this.state.selectedMovie} dispatchUpdateMovie={this.onMovieClick} />
               :
-              <MovieForm movie={this.state.editedMovie} dispatchCancelClicked={this.onCancelForm} />
+              <MovieForm movie={this.state.editedMovie} 
+                  dispatchCancelClicked={this.onCancelForm}
+                  dispatchCreateMovie={this.onCreateMovie}
+                  dispatchUpdateMovie={this.onMovieClick}
+              />
             }
           </div>
         </div>
