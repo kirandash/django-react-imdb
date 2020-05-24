@@ -250,3 +250,13 @@
 2. Send event from MovieList.js via props
 3. Catch event and store data in state in App.js
 4. Modify MovieDetails.js to show more data
+
+### 3.9 Rating with stars from Font awesome
+1. Add font awesome - Follow guide at: https://github.com/FortAwesome/react-fontawesome
+    - `cd imdb_ui`
+    - `npm i --save @fortawesome/fontawesome-svg-core`
+    - `npm i --save @fortawesome/free-solid-svg-icons`
+    - `npm i --save @fortawesome/react-fontawesome`
+    - or single line instead of above 3: `npm i --save @fortawesome/fontawesome-svg-core  @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome`
+    - Add start font awesome icon to MovieDetails.js file. And change color of star based on avg rating
+2. Add no. of votes info to MovieDetails.js file.
