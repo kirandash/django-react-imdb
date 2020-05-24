@@ -17,6 +17,7 @@ class App extends React.Component {
         'Authorization': 'Token 9de5ae4e0f924d43aef5eaad22403d3657009fe6' // later we will get token dynamically
       }
     })
+    .then(res => res.json())
     .then(res => console.log(res))
     .catch(err => console.log(err))
   }

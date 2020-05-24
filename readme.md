@@ -224,3 +224,14 @@
 2. Add fetch GET call for movies api in App.js
 3. **CORS issue**:
     - Now GET API call will fail. We must tell Django which servers to trust for API calls.
+
+### 3.5 CORS Issue Fix in Django
+**Django**:
+1. Use external library django-cors-headers
+    - Follow instructions from doc at: https://pypi.org/project/django-cors-headers/ 
+    - `pip install django-cors-headers`
+    - Add 'corsheaders' to INSTALLED_APPS
+    - Add middleware `'corsheaders.middleware.CorsMiddleware',` after commonmiddleware
+    - Add CORS_ORIGIN_ALLOW_ALL = True to settings.py file. It will allow all hosts to do cross-site requests. Not recommended for prod. Less secure. Only use for local
+    - For prod use CORS_ORIGIN_WHITELIST in settings.py file and add list of allowed hosts.
+    - Restart FE and BE server. And load http://localhost:3000/ - movies GET API call will be successful.
