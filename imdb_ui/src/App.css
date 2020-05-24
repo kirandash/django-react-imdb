@@ -36,3 +36,16 @@
   margin-right: 15px;
   cursor: pointer;
 }
+
+button {
+  background: green;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  color: white;
+  border-radius: 4px;
+}
+
+.movie-list button {
+  margin-top: 20px;
+}

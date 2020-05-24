@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import MovieList from './components/MovieList';
 import MovieDetails from './components/MovieDetails';
+import MovieForm from './components/MovieForm';
 
 class App extends React.Component {
   constructor(props){
@@ -9,7 +10,8 @@ class App extends React.Component {
     // this.movies = ['titanic', 'avatar'];
     this.state = {
       movies: [],
-      selectedMovie: null
+      selectedMovie: null,
+      editedMovie: null
     }
   }
 
@@ -35,8 +37,22 @@ class App extends React.Component {
   onMovieClick = movie => {
     console.log(movie);
     this.setState({
-      selectedMovie: movie
-    })
+      selectedMovie: movie,
+      editedMovie: null
+    }) // Set selected movie and reset edited movie
+  }
+
+  onEditClick = movie => {
+    this.setState({
+      editedMovie: movie,
+      selectedMovie: null
+    }) // Set movie for edit and reset selected movie
+  }
+
+  onNewMovie = () => {
+      this.setState({
+        editedMovie: {title: '', description: ''}
+      });
   }
 
   onMovieDeleted = selMovie => {
@@ -49,8 +65,19 @@ class App extends React.Component {
       <div className="App">
         <h1>IMDB</h1>
         <div className="grid-layout">
-          <MovieList movies={this.state.movies} dispatchMovieClick={this.onMovieClick} movieDeleted={this.onMovieDeleted} />
-          <MovieDetails movie={this.state.selectedMovie} dispatchUpdateMovie={this.onMovieClick} />
+          <MovieList movies={this.state.movies} 
+              dispatchMovieClick={this.onMovieClick} 
+              movieDeleted={this.onMovieDeleted} 
+              dispatchEditClick={this.onEditClick}
+              dispatchNewMovie={this.onNewMovie}
+          />
+          <div>
+            {!this.state.editedMovie ? 
+              <MovieDetails movie={this.state.selectedMovie} dispatchUpdateMovie={this.onMovieClick} />
+              :
+              <MovieForm movie={this.state.editedMovie} />
+            }
+          </div>
         </div>
       </div>
     )

@@ -280,3 +280,9 @@
 ### 3.13 DELETE method
 1. Call Delete API in MovieList.js
 2. Update state in parent ie App.js to reflect the new data.
+
+### 3.14 Add Form for Edit/New Movie Method
+1. Create MovieForm.js
+2. Dispatch edit and New movie clicks from MovieList.js
+3. Listen to dispatch event and show the MovieForm component in edit/new movie mode.
+4. Add some styles
