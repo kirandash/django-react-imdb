@@ -3,10 +3,9 @@ import React from 'react';
 const MovieList = (props) => {
     const {movies} = props;
     return (
-        <React.Fragment>
-            <h2>Movie List</h2>
+        <div>
             {movies.map((movie, index) => <h3 key={index}>{movie.title}</h3>)}
-        </React.Fragment>
+        </div>
     )
 }
 

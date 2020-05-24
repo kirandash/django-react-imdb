@@ -1,13 +1,15 @@
 import React from 'react';
 import './App.css';
 import MovieList from './components/MovieList';
+import MovieDetails from './components/MovieDetails';
 
 class App extends React.Component {
   constructor(props){
     super(props)
     // this.movies = ['titanic', 'avatar'];
     this.state = {
-      movies: []
+      movies: [],
+      selectedMovie: null
     }
   }
 
@@ -34,7 +36,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>IMDB</h1>
-        <MovieList movies={this.state.movies} />
+        <div className="grid-layout">
+          <MovieList movies={this.state.movies} />
+          <MovieDetails movie={this.state.selectedMovie} />
+        </div>
       </div>
     )
   }
