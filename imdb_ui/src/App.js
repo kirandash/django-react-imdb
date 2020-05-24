@@ -32,12 +32,19 @@ class App extends React.Component {
     .catch(err => console.log(err))
   }
 
+  onMovieClick = movie => {
+    console.log(movie);
+    this.setState({
+      selectedMovie: movie
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>IMDB</h1>
         <div className="grid-layout">
-          <MovieList movies={this.state.movies} />
+          <MovieList movies={this.state.movies} dispatchMovieClick={this.onMovieClick} />
           <MovieDetails movie={this.state.selectedMovie} />
         </div>
       </div>

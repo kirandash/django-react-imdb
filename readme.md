@@ -244,3 +244,9 @@
 ### 3.7 Details Component
 1. create MovieDetails.js
 2. Add MovieDetails.js to App.js
+
+### 3.8 Passing Data b/w components
+1. Now we need to select a movie for MovieDetails.js when a movie is clicked on in MovieList.js
+2. Send event from MovieList.js via props
+3. Catch event and store data in state in App.js
+4. Modify MovieDetails.js to show more data
