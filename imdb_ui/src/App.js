@@ -5,7 +5,10 @@ import MovieList from './components/MovieList';
 class App extends React.Component {
   constructor(props){
     super(props)
-    this.movies = ['titanic', 'avatar'];
+    // this.movies = ['titanic', 'avatar'];
+    this.state = {
+      movies: []
+    }
   }
 
   componentDidMount(){
@@ -18,7 +21,12 @@ class App extends React.Component {
       }
     })
     .then(res => res.json())
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res); // array of movie objects from Django
+      this.setState({
+        movies: res
+      })
+    })
     .catch(err => console.log(err))
   }
 
@@ -26,7 +34,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>IMDB</h1>
-        <MovieList movies={this.movies} />
+        <MovieList movies={this.state.movies} />
       </div>
     )
   }

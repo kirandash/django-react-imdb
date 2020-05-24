@@ -5,7 +5,7 @@ const MovieList = (props) => {
     return (
         <React.Fragment>
             <h2>Movie List</h2>
-            {movies.map((movie, index) => <h3 key={index}>{movie}</h3>)}
+            {movies.map((movie, index) => <h3 key={index}>{movie.title}</h3>)}
         </React.Fragment>
     )
 }

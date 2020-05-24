@@ -235,3 +235,8 @@
     - Add CORS_ORIGIN_ALLOW_ALL = True to settings.py file. It will allow all hosts to do cross-site requests. Not recommended for prod. Less secure. Only use for local
     - For prod use CORS_ORIGIN_WHITELIST in settings.py file and add list of allowed hosts.
     - Restart FE and BE server. And load http://localhost:3000/ - movies GET API call will be successful.
+
+### 3.6 Storing Movies from response in State
+1. App.js: Log response data in FE by converting fetch response to JSON.
+2. store movie data in state
+3. Read movie data in MovieList.js
