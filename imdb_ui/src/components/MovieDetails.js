@@ -32,6 +32,22 @@ export class MovieDetails extends Component {
         .then(res => res.json())
         .then(res => {
             console.log(res); // array of updated movie object from Django
+            this.getDetails();
+        })
+        .catch(err => console.log(err))
+    }
+
+    getDetails = () => {
+        fetch(`http://127.0.0.1:8000/api/movies/${this.props.movie.id}/`, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Token 9de5ae4e0f924d43aef5eaad22403d3657009fe6' // later we will get token dynamically
+            }
+        })
+        .then(res => res.json())
+        .then(res => {
+            console.log(res); // array of updated movie object from Django
+            this.props.dispatchUpdateMovie(res)
         })
         .catch(err => console.log(err))
     }

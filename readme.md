@@ -266,3 +266,8 @@
 2. Add CSS for new stars
 3. Check if POST call is successful.
 4. Right now: after rating, star count is not being reflected on FE until refresh. We will fix that later.
+
+### 3.11 Update View for rating movie
+1. MovieDetails.js: Call movies/id/ api to get updated data from specific movie after rating is successful
+2. update the selectedMovie data in App.js so that the updated movie data will reflect in MovieDetails.js
+    - **Imp Note**: props.movie is immutable. So never, change data in props. Change data at parent level and send back via props.

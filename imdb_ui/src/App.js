@@ -45,7 +45,7 @@ class App extends React.Component {
         <h1>IMDB</h1>
         <div className="grid-layout">
           <MovieList movies={this.state.movies} dispatchMovieClick={this.onMovieClick} />
-          <MovieDetails movie={this.state.selectedMovie} />
+          <MovieDetails movie={this.state.selectedMovie} dispatchUpdateMovie={this.onMovieClick} />
         </div>
       </div>
     )
