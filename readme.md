@@ -308,3 +308,10 @@
 
 ### 3.18 Login Component
 1.  Login.js - Add form fields and call auth API to login and fetch token from response.
+
+### 3.19 Store Token in Cookies
+1. **CookiesProvider** is a wrapper we can wrap our components with. And all the components under it will receive the cookie.
+2. Import CookiesProvider in index.js. And wrap all the Route paths with it.
+3. Enable cookies for specific component using **withCookies** as a wrapper around components
+4. Add withCookies to Login.js and store the cookie with `this.props.cookies.set('imdb-token', res.token)`
+5. Get cookie using .get method in other components and pass token to API.

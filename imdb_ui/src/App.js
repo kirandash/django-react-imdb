@@ -1,4 +1,6 @@
 import React from 'react';
+import { withCookies } from 'react-cookie';
+
 import './App.css';
 import MovieList from './components/MovieList';
 import MovieDetails from './components/MovieDetails';
@@ -11,27 +13,32 @@ class App extends React.Component {
     this.state = {
       movies: [],
       selectedMovie: null,
-      editedMovie: null
+      editedMovie: null,
+      token: this.props.cookies.get('imdb-token')
     }
   }
 
   componentDidMount(){
     // Fetch Data from API - url, options
     // GET Movies
-    fetch(`${process.env.REACT_APP_API_URL}/api/movies/`, {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Token 9de5ae4e0f924d43aef5eaad22403d3657009fe6' // later we will get token dynamically
-      }
-    })
-    .then(res => res.json())
-    .then(res => {
-      console.log(res); // array of movie objects from Django
-      this.setState({
-        movies: res
+    if(this.state.token){
+      fetch(`${process.env.REACT_APP_API_URL}/api/movies/`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Token ${this.state.token}` // later we will get token dynamically
+        }
       })
-    })
-    .catch(err => console.log(err))
+      .then(res => res.json())
+      .then(res => {
+        console.log(res); // array of movie objects from Django
+        this.setState({
+          movies: res
+        })
+      })
+      .catch(err => console.log(err))
+    } else {
+      window.location.href = '/'
+    }
   }
 
   onMovieClick = movie => {
@@ -83,15 +90,18 @@ class App extends React.Component {
               movieDeleted={this.onMovieDeleted} 
               dispatchEditClick={this.onEditClick}
               dispatchNewMovie={this.onNewMovie}
+              token={this.state.token}
           />
           <div>
             {!this.state.editedMovie ? 
-              <MovieDetails movie={this.state.selectedMovie} dispatchUpdateMovie={this.onMovieClick} />
+              <MovieDetails movie={this.state.selectedMovie} dispatchUpdateMovie={this.onMovieClick}
+              token={this.state.token} />
               :
               <MovieForm movie={this.state.editedMovie} 
                   dispatchCancelClicked={this.onCancelForm}
                   dispatchCreateMovie={this.onCreateMovie}
                   dispatchUpdateMovie={this.onMovieClick}
+                  token={this.state.token}
               />
             }
           </div>
@@ -101,4 +111,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withCookies(App);

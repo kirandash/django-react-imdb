@@ -23,7 +23,7 @@ export class MovieDetails extends Component {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Token 9de5ae4e0f924d43aef5eaad22403d3657009fe6' // later we will get token dynamically
+                'Authorization': `Token ${this.props.token}` // later we will get token dynamically
             },
             body: JSON.stringify({
                 stars: stars
@@ -41,7 +41,7 @@ export class MovieDetails extends Component {
         fetch(`${process.env.REACT_APP_API_URL}/api/movies/${this.props.movie.id}/`, {
             method: 'GET',
             headers: {
-                'Authorization': 'Token 9de5ae4e0f924d43aef5eaad22403d3657009fe6' // later we will get token dynamically
+                'Authorization': `Token ${this.props.token}` // later we will get token dynamically
             }
         })
         .then(res => res.json())

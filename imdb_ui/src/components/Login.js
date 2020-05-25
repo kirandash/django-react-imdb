@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withCookies } from 'react-cookie';
 
 export class Login extends Component {
 
@@ -32,6 +33,7 @@ export class Login extends Component {
         .then(res => res.json())
         .then(res => {
             console.log(res.token); // token - store the token later in cookie to use with other API calls
+            this.props.cookies.set('imdb-token', res.token); // Set cookie
             window.location.href="/movies";
         })
         .catch(err => console.log(err))
@@ -52,4 +54,4 @@ export class Login extends Component {
     }
 }
 
-export default Login
+export default withCookies(Login)

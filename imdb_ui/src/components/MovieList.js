@@ -18,7 +18,7 @@ const MovieList = (props) => {
         fetch(`${process.env.REACT_APP_API_URL}/api/movies/${movie.id}/`, {
             method: 'DELETE',
             headers: {
-                'Authorization': 'Token 9de5ae4e0f924d43aef5eaad22403d3657009fe6' // later we will get token dynamically
+                'Authorization': `Token ${props.token}` // later we will get token dynamically
             }
         })
         .then(res => props.movieDeleted(movie)) // No response in DELETE API
