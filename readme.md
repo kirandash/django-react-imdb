@@ -305,3 +305,6 @@
     - Route is a component from react-router-dom that maps browser urls to components
     - BrowserRouter is a component from react-router-dom that wraps all Route components and then can be used in React JSX.
 5. Test http://localhost:3000/ : login component and http://localhost:3000/movies/ : App component
+
+### 3.18 Login Component
+1.  Login.js - Add form fields and call auth API to login and fetch token from response.

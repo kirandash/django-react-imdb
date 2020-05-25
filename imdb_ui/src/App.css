@@ -73,3 +73,8 @@ input, textarea {
 .movie-list button {
   margin-top: 20px;
 }
+
+.login-container {
+  width: 50%;
+  margin: 50px auto;
+}
