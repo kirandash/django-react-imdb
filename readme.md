@@ -315,3 +315,7 @@
 3. Enable cookies for specific component using **withCookies** as a wrapper around components
 4. Add withCookies to Login.js and store the cookie with `this.props.cookies.set('imdb-token', res.token)`
 5. Get cookie using .get method in other components and pass token to API.
+
+### 3.20 Registration view in Login component
+1. Login.js - check if user is not logged in and show registration view. Test register and login.
+2. Notes Optional: In our case, registration is working properly. In case it does not, make sure to add permission class as AllowAny for UserViewSet in Django: api/views.py file. and try again.
